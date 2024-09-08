@@ -12,28 +12,26 @@ fn main() {
             .read_line(&mut input)
             .expect("Error reading input");
 
-        match input.as_str() {
+
+        match input.as_str().trim() {
+            "1" => {
+                println!("Input the temperature you want to convert:");
+                for _ in 0..input.len() { input.pop(); }
+                io::stdin()
+                    .read_line(&mut input)
+                    .expect("Error reading input");
+
+                let number: i32 = match input.trim().parse() {
+                    Ok(number) => number,
+                    Err(_) => continue
+                };
+
+                let convert = convert_to_celsius(number);
+
+                println!("Converted {number}F to {convert}C")
+            }
             "q" => break,
             _ => continue
-        if input.trim() == "1" {
-            println!("Input the temperature you want to convert:");
-            let mut input = String::new();
-            io::stdin()
-                .read_line(&mut input)
-                .expect("Error reading input");
-
-            let number: i32 = match input.trim().parse() {
-                Ok(number) => number,
-                Err(_) => continue
-            };
-
-            let convert = convert_to_celsius(number);
-
-            println!("Converted {number}F to {convert}C")
-        } else if input.trim() == "q" {
-            break
-        } else {
-            println!("Invalid input");
         }
     }
 }
