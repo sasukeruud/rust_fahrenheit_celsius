@@ -22,7 +22,7 @@ fn main() {
                     .read_line(&mut input)
                     .expect("Error reading input");
 
-                let number: i32 = match input.trim().parse() {
+                let number: f32 = match input.trim().parse() {
                     Ok(number) => number,
                     Err(_) => continue
                 };
@@ -38,7 +38,7 @@ fn main() {
                     .read_line(&mut input)
                     .expect("Error reading input");
 
-                let number: i32 = match input.trim().parse() {
+                let number: f32 = match input.trim().parse() {
                     Ok(number) => number,
                     Err(_) => continue
                 };
@@ -53,10 +53,10 @@ fn main() {
     }
 }
 
-fn convert_to_fahrenheit(value: i32) -> i32 {
-    value * 9/5 + 32
+fn convert_to_fahrenheit(value: f32) -> f32 {
+    value * 9.0/5.0 + 32.0
 }
 
-fn convert_to_celsius(value: i32) -> i32 {
-    (value - 32) * 5 / 9
+fn convert_to_celsius(value: f32) -> f32 {
+    (value - 32.0) * 5.0 / 9.0
 }
